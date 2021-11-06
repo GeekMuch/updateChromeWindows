@@ -7,39 +7,25 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 
-# logger = logging.getLogger('')
-# logger.setLevel(logging.DEBUG)
-# fh = logging.FileHandler('my_log_info.log')
-# sh = logging.StreamHandler(sys.stdout)
-# formatter = logging.Formatter('[%(asctime)s] %(levelname)s [%(filename)s.%(funcName)s:%(lineno)d] %(message)s', datefmt='%a, %d %b %Y %H:%M:%S')
-# fh.setFormatter(formatter)
-# sh.setFormatter(formatter)
-# logger.addHandler(fh)
-# logger.addHandler(sh)
-
-
-pw = ""
-with open("pass","r") as passwd:
-    for x in passwd:
-        pw = x
-
 options = Options()
-options.add_argument("--headless")
+# options.add_argument("--headless")
 # driver = webdriver.Chrome(ChromeDriverManager().install())
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+driver1 = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+driver2 = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 
 
 def setup():
-    driver.get("https://discord.com/login")
+    print("\n[ * ] Openening in")
+    driver1.get("https://cyberkill.haaukins.com/teams")
     time.sleep(1)
-    print("\n[ * ] Logging in")
+    driver2.get("https://cyberkill5.ntp-event.dk/teams")
 
-    time.sleep(3)
-    print("\n[ * ] Finding sever & channel")
-    driver.get("https://discord.com/channels/560130078453923840/892169248376512523")
-    
-    time.sleep(5)
+
+    while 1:
+        driver1.refresh()
+        driver2.refresh()
+        time.sleep(5)
 
 def SirSpamAlot():
     count = 0
